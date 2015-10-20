@@ -50,7 +50,9 @@ require('!style!css!sass!./style.scss');
 		aiPlay: function() {
 			this.setState({boardDisabled: true});
 			setTimeout(() => {
-				if(this.state.difficulty === 'medium') {
+				if(this.state.difficulty === 'hard') {
+					this.perfectPlay();
+				} else if(this.state.difficulty === 'medium') {
 					this.reactivePlay();
 				} else {
 					this.randomPlay();
@@ -58,30 +60,46 @@ require('!style!css!sass!./style.scss');
 				this.setState({boardDisabled: false});
 			}, 1000);
 		},
+		
+		perfectPlay: function() {
+
+		},
 
 		reactivePlay: function() {
+			let x = this.opportunisticPlay();
+			if(x !== undefined) {
+				this.play(x);
+				return;
+			}
+			this.randomPlay();
+		},
+
+		opportunisticPlay: function() {
 			let player = this.state.turn;
 			let t = this.state.tiles;
-			let pendingVictory = (a, b, c) => {
-				if(t[a] == t[b] && t[a]) {
+			let pendingVictory = (a, b, c, x) => {
+				if(t[a] == t[b] && t[a] == x) {
 					if(!t[c]) return c;
-				} else if(t[a] == t[c] && t[a]) {
+				} else if(t[a] == t[c] && t[a] == x) {
 					if(!t[b]) return b;
-				} else if(t[b] == t[c] && t[b]) {
+				} else if(t[b] == t[c] && t[b] == x) {
 					if(!t[a]) return a;
 				}
 			}
 
-			for(let index in this.slices) {
-				let s = this.slices[index];
-				let x = pendingVictory(s[0], s[1], s[2]);
-				if(x !== undefined) {
-					this.play(x);
-					return;
+			let checkOpportunities = (player) => {
+				for(let index in this.slices) {
+					let s = this.slices[index];
+					let x = pendingVictory(s[0], s[1], s[2], player);
+					if(x !== undefined) return x;
 				}
 			}
 
-			this.randomPlay();
+			let x = checkOpportunities(player);
+			if(x !== undefined) return x;
+
+			let otherPlayer = player === 'x' ? 'o' : 'x';
+			return checkOpportunities(otherPlayer);
 		},
 
 		randomPlay: function() {
