@@ -14,7 +14,8 @@ require('!style!css!sass!./style.scss');
 				turn: 'o',
 				result: 'n',
 				ai: true,
-				difficulty: 'medium'
+				difficulty: 'medium',
+				boardDisabled: false
 			};
 		},
 
@@ -47,11 +48,15 @@ require('!style!css!sass!./style.scss');
 		},
 
 		aiPlay: function() {
-			if(this.state.difficulty === 'medium') {
-				this.reactivePlay();
-			} else {
-				this.randomPlay();
-			}
+			this.setState({boardDisabled: true});
+			setTimeout(() => {
+				if(this.state.difficulty === 'medium') {
+					this.reactivePlay();
+				} else {
+					this.randomPlay();
+				}
+				this.setState({boardDisabled: false});
+			}, 1000);
 		},
 
 		reactivePlay: function() {
@@ -98,6 +103,8 @@ require('!style!css!sass!./style.scss');
 		},
 
 		tileClick: function(position) {
+			if(this.state.boardDisabled) return;
+
 			let tiles = this.state.tiles;
 			if(tiles[position] || this.state.result !== 'n') return;
 
@@ -141,6 +148,7 @@ require('!style!css!sass!./style.scss');
 					pvp={this.twoPlayer}
 					pve={this.onePlayer}
 					ai={this.state.ai}
+					aiPlaying={this.state.boardDisabled}
 					resetAction={this.resetGame} />
 			</div>;
 		}
@@ -166,7 +174,9 @@ require('!style!css!sass!./style.scss');
 	let Menu = React.createClass({
 		render: function() {
 			let h3;
-			if(this.props.result === 'n') {
+			if(this.props.aiPlaying) {
+				h3 = <h3>Player {this.props.turn.toUpperCase()} playing...</h3>
+			} else if(this.props.result === 'n') {
 				h3 = <h3>Player {this.props.turn.toUpperCase()}'s turn.</h3>;
 			} else if(this.props.result === 'd') {
 				h3 = <h3>Draw!</h3>;
