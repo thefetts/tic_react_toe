@@ -1,5 +1,6 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
+let Matcher = require('./matcher.jsx');
 require('!style!css!sass!./style.scss');
 
 (() => {
@@ -65,47 +66,6 @@ require('!style!css!sass!./style.scss');
 			return player === 'o' ? 'x' : 'o';
 		},
 
-		opposite: (x) => (8-x),
-
-		nextSide: function(x) {
-			if(x === 3 || x === 0) return 1;
-			if(x === 1 || x === 2) return 5;
-			if(x === 5 || x === 8) return 7;
-			if(x === 7 || x === 6) return 3;
-		},
-
-		nextCorner: function(x) {
-			if(x === 0 || x === 1) return 2;
-			if(x === 2 || x === 5) return 8;
-			if(x === 8 || x === 7) return 6;
-			if(x === 6 || x === 3) return 0;
-		},
-
-		oppositeCorner: function(x) {
-			if(x === 0) return 8;
-			if(x === 2) return 6;
-			if(x === 8) return 0;
-			if(x === 6) return 2;
-		},
-
-		oppositeCorners: function(x) {
-			if(x === 1) return [8, 6];
-			if(x === 5) return [6, 0];
-			if(x === 7) return [0, 2];
-			if(x === 3) return [2, 8];
-		},
-
-		cornerBetween: function(x, y) {
-			if(x === 1 && y === 8) return 2;
-			if(x === 1 && y === 6) return 0;
-			if(x === 5 && y === 6) return 8;
-			if(x === 5 && y === 0) return 2;
-			if(x === 7 && y === 0) return 6;
-			if(x === 7 && y === 2) return 8;
-			if(x === 3 && y === 2) return 0;
-			if(x === 3 && y === 8) return 6;
-		},
-
 		advantageousPlay: function() {
 			let t = this.state.tiles;
 			let x = t.join('').length;
@@ -120,80 +80,18 @@ require('!style!css!sass!./style.scss');
 			} else if(x === 3) {
 				if(t[4] == p) {
 					let checks = [
-						this.sidePairMatch,
-						this.oppositeSideAndCornerMatch,
-						this.oppositeSidesMatch,
-						this.oppositeCornersMatch,
+						Matcher.sidePairMatch,
+						Matcher.oppositeSideAndCornerMatch,
+						Matcher.oppositeSidesMatch,
+						Matcher.oppositeCornersMatch,
 					];
 					for(let i in checks) {
 						let y = checks[i](o, t);
 						if(y !== undefined) return y;
 					}
 				} else {
-					let y = this.middleAndCornerMatch(o, t)
+					let y = Matcher.middleAndCornerMatch(o, t)
 					if(y !== undefined) return y;
-				}
-			}
-		},
-
-		sidePairMatch: function(player, t) {
-			let positions = [1, 5, 7, 3];
-			for(let i in positions) {
-				let a = positions[i];
-				let b = this.nextSide(a);
-
-				if(this.bothEqual(t[a], t[b], player)) {
-					return this.nextCorner(a);
-				}
-			}
-		},
-
-		oppositeSideAndCornerMatch: function(player, t) {
-			let sides = [1, 5, 7, 3];
-			for(let i in sides) {
-				let side = sides[i];
-				let corners = this.oppositeCorners(side);
-				for(let j in corners) {
-					let corner = corners[j];
-					if(this.bothEqual(t[side], t[corner], player)) {
-						return this.cornerBetween(side, corner);
-					}
-				}
-			}
-		},
-
-		oppositeSidesMatch: function(player, t) {
-			let positions = [1, 7, 5, 3];
-			for(let i = 0; i < positions.length; i += 2) {
-				let a = positions[i];
-				let b = positions[i+1];
-
-				if(this.bothEqual(t[a], t[b], player)) {
-					return this.nextCorner(a);
-				}
-			}
-		},
-
-		oppositeCornersMatch: function(player, t) {
-			let positions = [0, 8, 2, 6];
-			for(let i = 0; i < positions.length; i += 2) {
-				let a = positions[i];
-				let b = positions[i+1];
-				if(this.bothEqual(t[a], t[b], player)) {
-					return this.nextSide(a);
-				}
-			}
-		},
-
-		middleAndCornerMatch: function(player, t) {
-			let o = this.otherPlayer(player);
-			let positions = [0, 2, 8, 6];
-			for(let i in positions) {
-				let a = positions[i];
-				let b = this.oppositeCorner(a);
-
-				if(this.bothEqual(t[a], t[4], player) && t[b] == o) {
-					return this.nextCorner(b);
 				}
 			}
 		},
@@ -214,8 +112,6 @@ require('!style!css!sass!./style.scss');
 			this.randomPlay();
 		},
 
-		bothEqual: (a, b, x) => (a === b && a === x),
-
 		reactivePlay: function() {
 			let x = this.opportunisticPlay();
 			if(x !== undefined) {
@@ -228,11 +124,11 @@ require('!style!css!sass!./style.scss');
 		opportunisticPlay: function() {
 			let t = this.state.tiles;
 			let pendingVictory = (a, b, c, x) => {
-				if(this.bothEqual(t[a], t[b], x)) {
+				if(Matcher.bothEqual(t[a], t[b], x)) {
 					if(!t[c]) return c;
-				} else if(this.bothEqual(t[a], t[c], x)) {
+				} else if(Matcher.bothEqual(t[a], t[c], x)) {
 					if(!t[b]) return b;
-				} else if(this.bothEqual(t[b], t[c], x)) {
+				} else if(Matcher.bothEqual(t[b], t[c], x)) {
 					if(!t[a]) return a;
 				}
 			}
