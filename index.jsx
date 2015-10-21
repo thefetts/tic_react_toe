@@ -14,7 +14,7 @@ require('!style!css!sass!./style.scss');
 				turn: 'o',
 				result: 'n',
 				ai: true,
-				difficulty: 'medium',
+				difficulty: 'hard',
 				boardDisabled: false
 			};
 		},
@@ -34,7 +34,7 @@ require('!style!css!sass!./style.scss');
 
 		checkBoard: function() {
 			let t = this.state.tiles;
-			var check = (...tiles) => {
+			let check = (...tiles) => {
 				let t = tiles.join('');
 			  return (t === 'xxx' || t === 'ooo');
 			}
@@ -60,10 +60,161 @@ require('!style!css!sass!./style.scss');
 				this.setState({boardDisabled: false});
 			}, 1000);
 		},
+
+		otherPlayer: function(player = this.state.turn) {
+			return player === 'o' ? 'x' : 'o';
+		},
+
+		opposite: (x) => (8-x),
+
+		nextSide: function(x) {
+			if(x === 3 || x === 0) return 1;
+			if(x === 1 || x === 2) return 5;
+			if(x === 5 || x === 8) return 7;
+			if(x === 7 || x === 6) return 3;
+		},
+
+		nextCorner: function(x) {
+			if(x === 0 || x === 1) return 2;
+			if(x === 2 || x === 5) return 8;
+			if(x === 8 || x === 7) return 6;
+			if(x === 6 || x === 3) return 0;
+		},
+
+		oppositeCorner: function(x) {
+			if(x === 0) return 8;
+			if(x === 2) return 6;
+			if(x === 8) return 0;
+			if(x === 6) return 2;
+		},
+
+		oppositeCorners: function(x) {
+			if(x === 1) return [8, 6];
+			if(x === 5) return [6, 0];
+			if(x === 7) return [0, 2];
+			if(x === 3) return [2, 8];
+		},
+
+		cornerBetween: function(x, y) {
+			if(x === 1 && y === 8) return 2;
+			if(x === 1 && y === 6) return 0;
+			if(x === 5 && y === 6) return 8;
+			if(x === 5 && y === 0) return 2;
+			if(x === 7 && y === 0) return 6;
+			if(x === 7 && y === 2) return 8;
+			if(x === 3 && y === 2) return 0;
+			if(x === 3 && y === 8) return 6;
+		},
+
+		advantageousPlay: function() {
+			let t = this.state.tiles;
+			let x = t.join('').length;
+			let p = this.state.turn;
+			let o = this.otherPlayer();
+			if(x === 1) {
+				if(t[4]) {
+					return 0;
+				} else {
+					return 4;
+				}
+			} else if(x === 3) {
+				if(t[4] == p) {
+					let checks = [
+						this.sidePairMatch,
+						this.oppositeSideAndCornerMatch,
+						this.oppositeSidesMatch,
+						this.oppositeCornersMatch,
+					];
+					for(let i in checks) {
+						let y = checks[i](o, t);
+						if(y !== undefined) return y;
+					}
+				} else {
+					let y = this.middleAndCornerMatch(o, t)
+					if(y !== undefined) return y;
+				}
+			}
+		},
+
+		sidePairMatch: function(player, t) {
+			let positions = [1, 5, 7, 3];
+			for(let i in positions) {
+				let a = positions[i];
+				let b = this.nextSide(a);
+
+				if(this.bothEqual(t[a], t[b], player)) {
+					return this.nextCorner(a);
+				}
+			}
+		},
+
+		oppositeSideAndCornerMatch: function(player, t) {
+			let sides = [1, 5, 7, 3];
+			for(let i in sides) {
+				let side = sides[i];
+				let corners = this.oppositeCorners(side);
+				for(let j in corners) {
+					let corner = corners[j];
+					if(this.bothEqual(t[side], t[corner], player)) {
+						return this.cornerBetween(side, corner);
+					}
+				}
+			}
+		},
+
+		oppositeSidesMatch: function(player, t) {
+			let positions = [1, 7, 5, 3];
+			for(let i = 0; i < positions.length; i += 2) {
+				let a = positions[i];
+				let b = positions[i+1];
+
+				if(this.bothEqual(t[a], t[b], player)) {
+					return this.nextCorner(a);
+				}
+			}
+		},
+
+		oppositeCornersMatch: function(player, t) {
+			let positions = [0, 8, 2, 6];
+			for(let i = 0; i < positions.length; i += 2) {
+				let a = positions[i];
+				let b = positions[i+1];
+				if(this.bothEqual(t[a], t[b], player)) {
+					return this.nextSide(a);
+				}
+			}
+		},
+
+		middleAndCornerMatch: function(player, t) {
+			let o = this.otherPlayer(player);
+			let positions = [0, 2, 8, 6];
+			for(let i in positions) {
+				let a = positions[i];
+				let b = this.oppositeCorner(a);
+
+				if(this.bothEqual(t[a], t[4], player) && t[b] == o) {
+					return this.nextCorner(b);
+				}
+			}
+		},
 		
 		perfectPlay: function() {
+			let x = this.opportunisticPlay();
+			if(x !== undefined) {
+				this.play(x);
+				return;
+			}
 
+			x = this.advantageousPlay();
+			if(x !== undefined) {
+				this.play(x);
+				return;
+			}
+
+			this.randomPlay();
 		},
+
+		bothEqual: (a, b, x) => (a === b && a === x),
 
 		reactivePlay: function() {
 			let x = this.opportunisticPlay();
@@ -75,14 +226,13 @@ require('!style!css!sass!./style.scss');
 		},
 
 		opportunisticPlay: function() {
-			let player = this.state.turn;
 			let t = this.state.tiles;
 			let pendingVictory = (a, b, c, x) => {
-				if(t[a] == t[b] && t[a] == x) {
+				if(this.bothEqual(t[a], t[b], x)) {
 					if(!t[c]) return c;
-				} else if(t[a] == t[c] && t[a] == x) {
+				} else if(this.bothEqual(t[a], t[c], x)) {
 					if(!t[b]) return b;
-				} else if(t[b] == t[c] && t[b] == x) {
+				} else if(this.bothEqual(t[b], t[c], x)) {
 					if(!t[a]) return a;
 				}
 			}
@@ -95,11 +245,10 @@ require('!style!css!sass!./style.scss');
 				}
 			}
 
-			let x = checkOpportunities(player);
+			let x = checkOpportunities(this.state.turn);
 			if(x !== undefined) return x;
 
-			let otherPlayer = player === 'x' ? 'o' : 'x';
-			return checkOpportunities(otherPlayer);
+			return checkOpportunities(this.otherPlayer());
 		},
 
 		randomPlay: function() {
@@ -116,7 +265,7 @@ require('!style!css!sass!./style.scss');
 		play: function(position, cb=()=>{}) {
 			let tiles = this.state.tiles;
 			tiles[position] = this.state.turn;
-			let turn = this.state.turn === 'o' ? 'x' : 'o';
+			let turn = this.otherPlayer();
 			this.setState({tiles, turn, result: this.checkBoard()}, cb);
 		},
 
@@ -143,7 +292,10 @@ require('!style!css!sass!./style.scss');
 		},
 
 		resetGame: function() {
-			this.setState(this.getInitialState());
+			let state = this.getInitialState();
+			delete state.ai;
+			delete state.difficulty;
+			this.setState(state);
 		},
 
 		render: function() {
