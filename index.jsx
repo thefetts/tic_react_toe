@@ -62,15 +62,11 @@ require('!style!css!sass!./style.scss');
 			}, 1000);
 		},
 
-		otherPlayer: function(player = this.state.turn) {
-			return player === 'o' ? 'x' : 'o';
-		},
-
 		advantageousPlay: function() {
 			let t = this.state.tiles;
 			let x = t.join('').length;
 			let p = this.state.turn;
-			let o = this.otherPlayer();
+			let o = Matcher.otherPlayer(this.state.turn);
 			if(x === 1) {
 				if(t[4]) {
 					return 0;
@@ -124,11 +120,11 @@ require('!style!css!sass!./style.scss');
 		opportunisticPlay: function() {
 			let t = this.state.tiles;
 			let pendingVictory = (a, b, c, x) => {
-				if(Matcher.bothEqual(t[a], t[b], x)) {
+				if(Matcher.allEqual(t[a], t[b], x)) {
 					if(!t[c]) return c;
-				} else if(Matcher.bothEqual(t[a], t[c], x)) {
+				} else if(Matcher.allEqual(t[a], t[c], x)) {
 					if(!t[b]) return b;
-				} else if(Matcher.bothEqual(t[b], t[c], x)) {
+				} else if(Matcher.allEqual(t[b], t[c], x)) {
 					if(!t[a]) return a;
 				}
 			}
@@ -144,7 +140,7 @@ require('!style!css!sass!./style.scss');
 			let x = checkOpportunities(this.state.turn);
 			if(x !== undefined) return x;
 
-			return checkOpportunities(this.otherPlayer());
+			return checkOpportunities(Matcher.otherPlayer(this.state.turn));
 		},
 
 		randomPlay: function() {
@@ -161,7 +157,7 @@ require('!style!css!sass!./style.scss');
 		play: function(position, cb=()=>{}) {
 			let tiles = this.state.tiles;
 			tiles[position] = this.state.turn;
-			let turn = this.otherPlayer();
+			let turn = Matcher.otherPlayer(this.state.turn);
 			this.setState({tiles, turn, result: this.checkBoard()}, cb);
 		},
 

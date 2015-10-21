@@ -1,35 +1,58 @@
+'use strict';
+
+let order = [0, 1, 2, 5, 8, 7, 6, 3];
+
+let getIndex = (x) => {
+	let a = order.indexOf(x);
+	if(a === -1) {
+		throw new Error(`Invalid argument: ${x}`);
+	}
+	return a;
+};
+
+let opposite = (x) => 8-x;
+
+let cornerBetween = function(side, corner) {
+	let a = getIndex(side);
+	let b = getIndex(corner);
+
+	if(a > b) b += 8;
+	let index;
+	if(b - a === 3) {
+		index = a === order.length-1 ? 0 : a+1;
+	} else if(b - a === 5) {
+		index = a === 0 ? order.length : a-1;
+	} else {
+		throw new Error(`Invalid side and corner pair: ${side}, ${corner}`);
+	}
+	return order[index];
+};
+
+let nextCorner = function(x) {
+	let a = getIndex(x);
+	let evenPosition = Math.floor(a/2)*2;
+	let index = evenPosition < 6 ? evenPosition+2 : 0;
+	return order[index];
+};
+
+let nextSide = function(x) {
+	let a = getIndex(x);
+	let evenPosition = Math.ceil(a/2)*2;
+	let index = evenPosition < 8 ? evenPosition+1 : 1;
+	return order[index];
+};
+
+let oppositeCorners = function(x) {
+	let index = getIndex(x);
+	let a = (index + 3) % 8;
+	let b = (index + 5) % 8;
+	return [order[a], order[b]];
+};
+
 module.exports = {
-	cornerBetween: function(x, y) {
-		if(x === 1 && y === 8) return 2;
-		if(x === 1 && y === 6) return 0;
-		if(x === 5 && y === 6) return 8;
-		if(x === 5 && y === 0) return 2;
-		if(x === 7 && y === 0) return 6;
-		if(x === 7 && y === 2) return 8;
-		if(x === 3 && y === 2) return 0;
-		if(x === 3 && y === 8) return 6;
-	},
-
-	nextCorner: function(x) {
-		if(x === 0 || x === 1) return 2;
-		if(x === 2 || x === 5) return 8;
-		if(x === 8 || x === 7) return 6;
-		if(x === 6 || x === 3) return 0;
-	},
-
-	nextSide: function(x) {
-		if(x === 3 || x === 0) return 1;
-		if(x === 1 || x === 2) return 5;
-		if(x === 5 || x === 8) return 7;
-		if(x === 7 || x === 6) return 3;
-	},
-
-	opposite: (x) => 8-x,
-
-	oppositeCorners: function(x) {
-		if(x === 1) return [8, 6];
-		if(x === 5) return [6, 0];
-		if(x === 7) return [0, 2];
-		if(x === 3) return [2, 8];
-	},
+	opposite,
+	cornerBetween,
+	nextCorner,
+	nextSide,
+	oppositeCorners,
 };
