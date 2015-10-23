@@ -1,6 +1,6 @@
 'use strict';
 
-let Finder = require('./../finder.jsx');
+let Finder = require('./../jsx/finder.jsx');
 
 describe('finder', () => {
 	describe('cornerBetween', () => {

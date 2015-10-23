@@ -1,6 +1,6 @@
 'use strict';
 
-let Matcher = require('./../matcher.jsx');
+let Matcher = require('./../jsx/matcher.jsx');
 
 describe('matcher', () => {
 	describe('allEqual', () => {
