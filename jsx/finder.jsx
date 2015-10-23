@@ -50,9 +50,9 @@ let oppositeCorners = function(x) {
 };
 
 module.exports = {
-	opposite,
 	cornerBetween,
 	nextCorner,
 	nextSide,
+	opposite,
 	oppositeCorners,
 };

@@ -19,16 +19,6 @@ describe('matcher', () => {
 		});
 	});
 
-	describe('otherPlayer', () => {
-		it('returns x if o is passed', () => {
-			expect(Matcher.otherPlayer('o')).toEqual('x');
-		});
-
-		it('returns o if x is passed', () => {
-			expect(Matcher.otherPlayer('x')).toEqual('o');
-		});
-	});
-
 	describe('middleAndCornerMatch', () => {
 		it('returns a free corner if the enemy holds the center and a corner', () => {
 			let tiles = ['x','','','','o','','','','o'];
@@ -74,6 +64,79 @@ describe('matcher', () => {
 
 			tiles = ['', 'o', '', '', 'o', '', 'x', '', ''];
 			expect(Matcher.oppositeCornersMatch('x', tiles)).toEqual(undefined);
+		});
+	});
+
+	describe('oppositeSideAndCornerMatch', () => {
+		it('returns the corner between a matching side and opposite corner', () => {
+			let tiles = ['','x','','','o','','','','x'];
+			expect(Matcher.oppositeSideAndCornerMatch('x', tiles)).toEqual(2);
+
+			tiles = ['','','o','o','x','','','',''];
+			expect(Matcher.oppositeSideAndCornerMatch('o', tiles)).toEqual(0);
+		});
+
+		it('returns undefined if the tileset does not match', () => {
+			let tiles = ['', '', '', '', '', '', '', '', ''];
+			expect(Matcher.oppositeSideAndCornerMatch('o', tiles)).toEqual(undefined);
+
+			tiles = ['', '', 'x', 'x', '', 'o', '', '', ''];
+			expect(Matcher.oppositeSideAndCornerMatch('o', tiles)).toEqual(undefined);
+
+			tiles = ['', 'o', '', '', 'o', '', 'x', '', ''];
+			expect(Matcher.oppositeSideAndCornerMatch('x', tiles)).toEqual(undefined);
+		});
+	});
+
+	describe('oppositeSidesMatch', () => {
+		it('returns a corner if opposite sides match', () => {
+			let tiles = ['','x','','','o','','','x',''];
+			expect(Matcher.oppositeSidesMatch('x', tiles)).toEqual(2);
+
+			tiles = ['','','','o','x','o','','',''];
+			expect(Matcher.oppositeSidesMatch('o', tiles)).toEqual(8);
+		});
+
+		it('returns undefined if the tileset does not match', () => {
+			let tiles = ['', '', '', '', '', '', '', '', ''];
+			expect(Matcher.oppositeSidesMatch('o', tiles)).toEqual(undefined);
+
+			tiles = ['', '', 'x', 'x', '', 'o', '', '', ''];
+			expect(Matcher.oppositeSidesMatch('o', tiles)).toEqual(undefined);
+
+			tiles = ['', 'o', '', '', 'o', '', 'x', '', ''];
+			expect(Matcher.oppositeSidesMatch('x', tiles)).toEqual(undefined);
+		});
+	});
+
+	describe('otherPlayer', () => {
+		it('returns x if o is passed', () => {
+			expect(Matcher.otherPlayer('o')).toEqual('x');
+		});
+
+		it('returns o if x is passed', () => {
+			expect(Matcher.otherPlayer('x')).toEqual('o');
+		});
+	});
+
+	describe('sidePairMatch', () => {
+		it('returns the corner between a pair of matching sides', () => {
+			let tiles = ['','x','','','o','x','','',''];
+			expect(Matcher.sidePairMatch('x', tiles)).toEqual(2);
+
+			tiles = ['','','','o','x','','','o',''];
+			expect(Matcher.sidePairMatch('o', tiles)).toEqual(6);
+		});
+
+		it('returns undefined if the tileset does not match', () => {
+			let tiles = ['', '', '', '', '', '', '', '', ''];
+			expect(Matcher.sidePairMatch('o', tiles)).toEqual(undefined);
+
+			tiles = ['', '', 'x', 'x', '', 'o', '', '', ''];
+			expect(Matcher.sidePairMatch('o', tiles)).toEqual(undefined);
+
+			tiles = ['', 'o', '', '', 'o', '', 'x', '', ''];
+			expect(Matcher.sidePairMatch('x', tiles)).toEqual(undefined);
 		});
 	});
 });

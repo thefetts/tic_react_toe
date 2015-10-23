@@ -4,8 +4,6 @@ let Finder = require('./finder.jsx');
 
 let allEqual = (a, b, x) => a === b && a === x;
 
-let otherPlayer = p => p === 'o' ? 'x' : 'o';
-
 let middleAndCornerMatch = function(player, t) {
 	let o = this.otherPlayer(player);
 	let positions = [0, 2, 8, 6];
@@ -56,6 +54,9 @@ let oppositeSidesMatch = function(player, t) {
 	}
 };
 
+
+let otherPlayer = p => p === 'o' ? 'x' : 'o';
+
 let sidePairMatch = function(player, t) {
 	let positions = [1, 5, 7, 3];
 	for(let i in positions) {
@@ -70,10 +71,10 @@ let sidePairMatch = function(player, t) {
 
 module.exports = {
 	allEqual,
-	otherPlayer,
 	middleAndCornerMatch,
 	oppositeCornersMatch,
 	oppositeSideAndCornerMatch,
 	oppositeSidesMatch,
+	otherPlayer,
 	sidePairMatch,
 };
