@@ -54,7 +54,6 @@ let oppositeSidesMatch = function(player, t) {
 	}
 };
 
-
 let otherPlayer = p => p === 'o' ? 'x' : 'o';
 
 let sidePairMatch = function(player, t) {

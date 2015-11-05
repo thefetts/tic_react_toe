@@ -1,0 +1,263 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save-dev',
+1 verbose cli   'react-addons-test-utils' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose install initial load of C:\Users\Administrator\Downloads\tictactoe\package.json
+5 warn package.json tictactoe@1.0.0 No repository field.
+6 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\babel-core\package.json
+7 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\babel-loader\package.json
+8 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\css-loader\package.json
+9 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\http-server\package.json
+10 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\jasmine-core\package.json
+11 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\jasmine-react\package.json
+12 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\jsx-loader\package.json
+13 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma\package.json
+14 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-chrome-launcher\package.json
+15 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-jasmine\package.json
+16 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-jsx-preprocessor\package.json
+17 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-react-jsx-preprocessor\package.json
+18 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-react-preprocessor\package.json
+19 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-requirejs\package.json
+20 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-webpack\package.json
+21 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\node-sass\package.json
+22 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react\package.json
+23 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils\package.json
+24 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-dom\package.json
+25 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-hot-loader\package.json
+26 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-tools\package.json
+27 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\require\package.json
+28 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\requirejs\package.json
+29 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\sass-loader\package.json
+30 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\style-loader\package.json
+31 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\webpack\package.json
+32 verbose installManyTop reading scoped package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\webpack-dev-server\package.json
+33 info package.json requirejs@2.1.20 No license field.
+34 info package.json jasmine-react@1.1.0 No license field.
+35 info package.json jsx-loader@0.13.2 license should be a valid SPDX license expression
+36 info package.json react-addons-test-utils@0.14.0 No repository field.
+37 info package.json require@2.4.20 No license field.
+38 verbose readDependencies loading dependencies from C:\Users\Administrator\Downloads\tictactoe\package.json
+39 verbose install react-addons-test-utils is installed as 0.14.0
+40 silly cache add args [ 'react-addons-test-utils', null ]
+41 verbose cache add spec react-addons-test-utils
+42 silly cache add parsed spec Result {
+42 silly cache add   raw: 'react-addons-test-utils',
+42 silly cache add   scope: null,
+42 silly cache add   name: 'react-addons-test-utils',
+42 silly cache add   rawSpec: '',
+42 silly cache add   spec: '*',
+42 silly cache add   type: 'range' }
+43 silly addNamed react-addons-test-utils@*
+44 verbose addNamed "*" is a valid semver range for react-addons-test-utils
+45 silly addNameRange { name: 'react-addons-test-utils', range: '*', hasData: false }
+46 silly mapToRegistry name react-addons-test-utils
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry https://registry.npmjs.org/
+49 silly mapToRegistry uri https://registry.npmjs.org/react-addons-test-utils
+50 verbose addNameRange registry:https://registry.npmjs.org/react-addons-test-utils not in flight; fetching
+51 verbose request uri https://registry.npmjs.org/react-addons-test-utils
+52 verbose request no auth needed
+53 info attempt registry request try #1 at 1:51:53 PM
+54 verbose request id e4081b59c2419943
+55 verbose etag "N9PIQQXV5J8RDRG8JOWENFPJ"
+56 http request GET https://registry.npmjs.org/react-addons-test-utils
+57 http 200 https://registry.npmjs.org/react-addons-test-utils
+58 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+58 verbose headers   etag: '"B7ARVOZMPXNBZ0M5DKCLDC7DW"',
+58 verbose headers   'content-type': 'application/json',
+58 verbose headers   'cache-control': 'max-age=60',
+58 verbose headers   'content-length': '6326',
+58 verbose headers   'accept-ranges': 'bytes',
+58 verbose headers   date: 'Thu, 05 Nov 2015 20:51:53 GMT',
+58 verbose headers   via: '1.1 varnish',
+58 verbose headers   age: '0',
+58 verbose headers   connection: 'keep-alive',
+58 verbose headers   'x-served-by': 'cache-lax1424-LAX',
+58 verbose headers   'x-cache': 'HIT',
+58 verbose headers   'x-cache-hits': '1',
+58 verbose headers   'x-timer': 'S1446756713.404451,VS0,VE45',
+58 verbose headers   vary: 'Accept' }
+59 silly get cb [ 200,
+59 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+59 silly get     etag: '"B7ARVOZMPXNBZ0M5DKCLDC7DW"',
+59 silly get     'content-type': 'application/json',
+59 silly get     'cache-control': 'max-age=60',
+59 silly get     'content-length': '6326',
+59 silly get     'accept-ranges': 'bytes',
+59 silly get     date: 'Thu, 05 Nov 2015 20:51:53 GMT',
+59 silly get     via: '1.1 varnish',
+59 silly get     age: '0',
+59 silly get     connection: 'keep-alive',
+59 silly get     'x-served-by': 'cache-lax1424-LAX',
+59 silly get     'x-cache': 'HIT',
+59 silly get     'x-cache-hits': '1',
+59 silly get     'x-timer': 'S1446756713.404451,VS0,VE45',
+59 silly get     vary: 'Accept' } ]
+60 verbose get saving react-addons-test-utils to C:\Users\Administrator\AppData\Roaming\npm-cache\registry.npmjs.org\react-addons-test-utils\.cache.json
+61 silly addNameRange number 2 { name: 'react-addons-test-utils', range: '*', hasData: true }
+62 silly addNameRange versions [ 'react-addons-test-utils',
+62 silly addNameRange   [ '0.14.0-beta2',
+62 silly addNameRange     '0.14.0-beta3',
+62 silly addNameRange     '0.14.0-rc1',
+62 silly addNameRange     '0.14.0',
+62 silly addNameRange     '0.14.1',
+62 silly addNameRange     '0.14.2' ] ]
+63 silly addNamed react-addons-test-utils@0.14.2
+64 verbose addNamed "0.14.2" is a plain semver version for react-addons-test-utils
+65 silly mapToRegistry name react-addons-test-utils
+66 silly mapToRegistry using default registry
+67 silly mapToRegistry registry https://registry.npmjs.org/
+68 silly mapToRegistry uri https://registry.npmjs.org/react-addons-test-utils
+69 verbose addRemoteTarball https://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-0.14.2.tgz not in flight; adding
+70 verbose addRemoteTarball [ 'https://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-0.14.2.tgz',
+70 verbose addRemoteTarball   '05b1f68507f48671072caef5d45839844f48c30b' ]
+71 info retry fetch attempt 1 at 1:51:53 PM
+72 info attempt registry request try #1 at 1:51:53 PM
+73 http fetch GET https://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-0.14.2.tgz
+74 http fetch 200 https://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-0.14.2.tgz
+75 silly fetchAndShaCheck shasum 05b1f68507f48671072caef5d45839844f48c30b
+76 verbose addTmpTarball C:\Users\ADMINI~1\AppData\Local\Temp\npm-5588-ecbea265\registry.npmjs.org\react-addons-test-utils\-\react-addons-test-utils-0.14.2.tgz not in flight; adding
+77 verbose addTmpTarball already have metadata; skipping unpack for react-addons-test-utils@0.14.2
+78 silly cache afterAdd react-addons-test-utils@0.14.2
+79 verbose afterAdd C:\Users\Administrator\AppData\Roaming\npm-cache\react-addons-test-utils\0.14.2\package\package.json not in flight; writing
+80 verbose afterAdd C:\Users\Administrator\AppData\Roaming\npm-cache\react-addons-test-utils\0.14.2\package\package.json written
+81 silly install resolved [ { name: 'react-addons-test-utils',
+81 silly install resolved     version: '0.14.2',
+81 silly install resolved     main: 'index.js',
+81 silly install resolved     license: 'BSD-3-Clause',
+81 silly install resolved     peerDependencies: { react: '^0.14.2' },
+81 silly install resolved     description: 'This package provides the React TestUtils add-on. See http://facebook.github.io/react/docs/addons.html for more information.',
+81 silly install resolved     _id: 'react-addons-test-utils@0.14.2',
+81 silly install resolved     _shasum: '05b1f68507f48671072caef5d45839844f48c30b',
+81 silly install resolved     _resolved: 'https://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-0.14.2.tgz',
+81 silly install resolved     _from: 'react-addons-test-utils@*',
+81 silly install resolved     scripts: {},
+81 silly install resolved     _npmVersion: '2.14.9',
+81 silly install resolved     _nodeVersion: '4.2.0',
+81 silly install resolved     _npmUser: { name: 'zpao', email: 'paul@oshannessy.com' },
+81 silly install resolved     maintainers: [ [Object], [Object] ],
+81 silly install resolved     dist:
+81 silly install resolved      { shasum: '05b1f68507f48671072caef5d45839844f48c30b',
+81 silly install resolved        tarball: 'http://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-0.14.2.tgz' },
+81 silly install resolved     directories: {} } ]
+82 info install react-addons-test-utils@0.14.2 into C:\Users\Administrator\Downloads\tictactoe
+83 info installOne react-addons-test-utils@0.14.2
+84 verbose installOne of react-addons-test-utils to C:\Users\Administrator\Downloads\tictactoe not in flight; installing
+85 verbose lock using C:\Users\Administrator\AppData\Roaming\npm-cache\_locks\react-addons-test-utils-150ba56e25837837.lock for C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+86 silly install write writing react-addons-test-utils 0.14.2 to C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+87 verbose unbuild node_modules\react-addons-test-utils
+88 info preuninstall react-addons-test-utils@0.14.0
+89 info uninstall react-addons-test-utils@0.14.0
+90 verbose unbuild rmStuff react-addons-test-utils@0.14.0 from C:\Users\Administrator\Downloads\tictactoe\node_modules
+91 info postuninstall react-addons-test-utils@0.14.0
+92 silly gentlyRm C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils is being purged from base C:\Users\Administrator\Downloads\tictactoe
+93 verbose gentlyRm don't care about contents; nuking C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+94 silly vacuum-fs purging C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+95 silly vacuum-fs quitting because other entries in C:\Users\Administrator\Downloads\tictactoe\node_modules
+96 verbose tar unpack C:\Users\Administrator\AppData\Roaming\npm-cache\react-addons-test-utils\0.14.2\package.tgz
+97 verbose tar unpacking to C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+98 silly gentlyRm C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils is being purged
+99 verbose gentlyRm don't care about contents; nuking C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+100 silly gunzTarPerm modes [ '777', '666' ]
+101 silly gunzTarPerm extractEntry package.json
+102 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+103 silly gunzTarPerm extractEntry README.md
+104 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+105 silly gunzTarPerm extractEntry LICENSE
+106 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+107 silly gunzTarPerm extractEntry index.js
+108 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+109 silly gunzTarPerm extractEntry PATENTS
+110 silly gunzTarPerm modified mode [ 'PATENTS', 420, 438 ]
+111 verbose write writing to C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils\package.json
+112 info preinstall react-addons-test-utils@0.14.2
+113 verbose readDependencies loading dependencies from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils\package.json
+114 silly prepareForInstallMany adding react@^0.14.2 from react-addons-test-utils peerDependencies
+115 warn peerDependencies The peer dependency react@^0.14.2 included from react-addons-test-utils will no
+116 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+117 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+118 verbose readDependencies loading dependencies from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils\package.json
+119 silly install resolved []
+120 verbose about to build C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+121 info build C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+122 info linkStuff react-addons-test-utils@0.14.2
+123 silly linkStuff react-addons-test-utils@0.14.2 has C:\Users\Administrator\Downloads\tictactoe\node_modules as its parent node_modules
+124 verbose linkBins react-addons-test-utils@0.14.2
+125 verbose linkMans react-addons-test-utils@0.14.2
+126 verbose rebuildBundles react-addons-test-utils@0.14.2
+127 info install react-addons-test-utils@0.14.2
+128 info postinstall react-addons-test-utils@0.14.2
+129 verbose readDependencies loading dependencies from C:\Users\Administrator\Downloads\tictactoe\package.json
+130 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\babel-core\package.json
+131 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\babel-loader\package.json
+132 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\css-loader\package.json
+133 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\http-server\package.json
+134 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\jasmine-core\package.json
+135 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\jasmine-react\package.json
+136 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\jsx-loader\package.json
+137 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma\package.json
+138 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-chrome-launcher\package.json
+139 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-jasmine\package.json
+140 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-jsx-preprocessor\package.json
+141 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-react-jsx-preprocessor\package.json
+142 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-react-preprocessor\package.json
+143 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-requirejs\package.json
+144 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\karma-webpack\package.json
+145 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\node-sass\package.json
+146 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react\package.json
+147 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils\package.json
+148 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-dom\package.json
+149 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-hot-loader\package.json
+150 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\react-tools\package.json
+151 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\require\package.json
+152 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\requirejs\package.json
+153 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\sass-loader\package.json
+154 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\style-loader\package.json
+155 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\webpack\package.json
+156 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\webpack-dev-server\package.json
+157 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\hs\package.json
+158 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\hs.cmd\package.json
+159 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\http-server\package.json
+160 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\http-server.cmd\package.json
+161 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\jsx\package.json
+162 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\jsx.cmd\package.json
+163 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\karma\package.json
+164 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\karma.cmd\package.json
+165 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\node-sass\package.json
+166 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\node-sass.cmd\package.json
+167 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\r.js\package.json
+168 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\r.js.cmd\package.json
+169 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\require\package.json
+170 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\require.cmd\package.json
+171 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\webpack\package.json
+172 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\webpack-dev-server\package.json
+173 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\webpack-dev-server.cmd\package.json
+174 verbose targetResolver reading package data from C:\Users\Administrator\Downloads\tictactoe\node_modules\.bin\webpack.cmd\package.json
+175 verbose already installed skipping react@^0.14.2 C:\Users\Administrator\Downloads\tictactoe
+176 silly install resolved []
+177 verbose unlock done using C:\Users\Administrator\AppData\Roaming\npm-cache\_locks\react-addons-test-utils-150ba56e25837837.lock for C:\Users\Administrator\Downloads\tictactoe\node_modules\react-addons-test-utils
+178 verbose validateInstall loading C:\Users\Administrator\Downloads\tictactoe\package.json for validation
+179 verbose stack Error: The package react@0.14.0 does not satisfy its siblings' peerDependencies requirements!
+179 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
+179 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:268:7
+179 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:142:5
+179 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+179 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+179 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+179 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+179 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+179 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+179 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+180 verbose cwd C:\Users\Administrator\Downloads\tictactoe
+181 error Windows_NT 6.1.7601
+182 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save-dev" "react-addons-test-utils"
+183 error node v4.2.1
+184 error npm  v2.14.7
+185 error code EPEERINVALID
+186 error peerinvalid The package react@0.14.0 does not satisfy its siblings' peerDependencies requirements!
+186 error peerinvalid Peer react-addons-test-utils@0.14.2 wants react@^0.14.2
+187 verbose exit [ 1, true ]

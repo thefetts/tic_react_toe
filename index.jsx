@@ -1,6 +1,6 @@
 let ReactDOM = require('react-dom');
 	
-let Game = require('./jsx/components/game.jsx');
+let Game = require('./jsx/game.jsx');
 require('!style!css!sass!./style.scss');
 
 (() => {

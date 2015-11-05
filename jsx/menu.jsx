@@ -1,3 +1,7 @@
+'use strict';
+
+let React = require('react');
+
 module.exports = React.createClass({
 	render: function() {
 		let h3;
@@ -7,8 +11,10 @@ module.exports = React.createClass({
 			h3 = <h3>Player {this.props.turn.toUpperCase()}'s turn.</h3>;
 		} else if(this.props.result === 'd') {
 			h3 = <h3>Draw!</h3>;
-		} else {
+		} else if(this.props.result) {
 			h3 = <h3>Player {this.props.result.toUpperCase()} won!</h3>;
+		} else {
+			h3 = <h3>Loading...</h3>
 		}
 
 		let ai = `Opponent: ${this.props.ai ? 'Computer' : 'Player 2'}`;
@@ -27,5 +33,5 @@ module.exports = React.createClass({
 				{aiBtn}
 			</div>
 		);
-  }
+	}
 });

@@ -1,4 +1,4 @@
-let Matcher = require('./../matcher.jsx');
+let Matcher = require('./matcher.jsx');
 
 let Menu = require('./menu.jsx');
 let Tile = require('./tile.jsx');
